@@ -25,7 +25,7 @@ import java.util.Random;
  * This application does not exploit the model-view-controller pattern, and as
  * such is just to be used to learn the basics, not as a template for your
  * applications.
- * 
+ *
  */
 public class BadIOGUI {
 
@@ -49,12 +49,20 @@ public class BadIOGUI {
         canvas.add(panel2, BorderLayout.CENTER);
         final JButton write = new JButton("Write on file");
         panel2.add(write, BorderLayout.CENTER);
+        final JButton button2 = new JButton("Read");
+        panel2.add(button2, BorderLayout.CENTER);
         //canvas.add(write, BorderLayout.CENTER);
         frame.setContentPane(canvas);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         /*
          * Handlers
          */
+        button2.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(final ActionEvent e) {
+                System.out.print("Premuto"); // NOPMD: allowed as this is just an excercise
+            }
+        });
         write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent ignored) {
@@ -110,4 +118,3 @@ public class BadIOGUI {
        new BadIOGUI().display();
     }
 }
-
