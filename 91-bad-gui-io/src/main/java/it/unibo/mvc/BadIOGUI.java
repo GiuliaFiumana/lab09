@@ -14,8 +14,8 @@ import java.io.File;
 import java.io.IOException;
 import java.io.PrintStream;
 import java.nio.charset.StandardCharsets;
-//import java.nio.file.Files;
-//import java.util.List;
+import java.nio.file.Files;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -60,7 +60,15 @@ public class BadIOGUI {
         button2.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
-                System.out.print("Premuto"); // NOPMD: allowed as this is just an excercise
+                try {
+                    final List<String> lines = Files.readAllLines(new File(PATH).toPath());
+                    for (final String line : lines) {
+                        System.out.println(line); // NOPMD: allowed as this is just an exercise
+                    }
+                } catch (final IOException ex) {
+                    JOptionPane.showMessageDialog(frame, ex.getMessage(), "Errore di lettura", JOptionPane.ERROR_MESSAGE);
+                    ex.printStackTrace(); // NOPMD: allowed as this is just an exercise
+                }
             }
         });
         write.addActionListener(new ActionListener() {
