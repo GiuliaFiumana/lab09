@@ -12,11 +12,11 @@ import java.util.Objects;
 
 public final class SimpleController implements Controller {
 
-    private List<String> printedStrings = new LinkedList<>();
+    private final List<String> printedStrings = new LinkedList<>();
     private String nextToPrint;
 
     @Override
-    public void setNextStringToPrint(final String stringa) throws IllegalArgumentException {
+    public void setNextStringToPrint(final String stringa) {
         this.nextToPrint = Objects.requireNonNull(stringa, "La stringa data è nulla");
     }
 
